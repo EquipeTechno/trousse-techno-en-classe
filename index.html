@@ -7,545 +7,210 @@
     <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/fr/7/73/Logo-C%C3%A9gep_G%C3%A9rald-Godin.svg">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #00a6dd;
-            --secondary: #0086b3;
-            --accent: #f4a261;
-            --bg-light: #faf9f7;
-            --bg-card: #ffffff;
-            --text-dark: #1a1a1a;
-            --text-medium: #4a4a4a;
-            --text-light: #737373;
+            --primary: #00a6dd; --secondary: #0086b3; --accent: #f4a261;
+            --bg-light: #faf9f7; --bg-card: #ffffff;
+            --text-dark: #1a1a1a; --text-medium: #4a4a4a; --text-light: #737373;
             --border: #e5e5e5;
-            --privacy: #8b5cf6;
-            --visual: #0ea5e9;
-            --setup: #f59e0b;
+            --privacy: #8b5cf6; --visual: #0ea5e9; --setup: #f59e0b;
         }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg-light); color: var(--text-dark); line-height: 1.6; transition: background-color 0.3s ease, color 0.3s ease; }
+        body.dark-mode { --bg-light: #1a1a1a; --bg-card: #2a2a2a; --text-dark: #f5f5f5; --text-medium: #d1d1d1; --text-light: #a8a8a8; --border: #404040; }
+        body.dark-mode .hero { background: linear-gradient(135deg, #0f1c2e 0%, #1a2942 100%); }
+        body.dark-mode .tips-section { background: #2a2a2a; border-color: #404040; }
+        body.dark-mode .workflow { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); border-color: #f59e0b; }
+        body.dark-mode .tip-item { background: #1a1a1a; border-color: #404040; }
+        body.dark-mode .card { box-shadow: 0 1px 3px rgba(255,255,255,0.05); }
+        body.dark-mode .card:hover { box-shadow: 0 12px 24px rgba(255,255,255,0.1); }
+        body.dark-mode .feedback-section { background: linear-gradient(135deg, #162125 0%, #1f2c31 100%) !important; border-color: #3a4b54 !important; }
+        body.dark-mode .feedback-card { background: rgba(10,17,22,0.62) !important; border-color: rgba(110,231,183,0.2) !important; }
+        body.dark-mode .feedback-title { color: #d1fae5 !important; }
+        body.dark-mode .feedback-text, body.dark-mode .feedback-text-small { color: #a7f3d0 !important; }
+        body.dark-mode .feedback-btn { background: linear-gradient(135deg,#2f8f7a 0%,#2a7f6d 100%) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.25) !important; color: #eafaf4 !important; }
+        body.dark-mode .feedback-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important; filter: none; background: linear-gradient(135deg,#358f7d 0%,#2f7f70 100%) !important; color: #f3fffa !important; }
+        body.dark-mode .powertoys-block { background: linear-gradient(135deg, #2a2318 0%, #302a1e 100%) !important; border-color: #4a3f2a !important; box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important; }
+        body.dark-mode .powertoys-block h2 { color: #c9a96e !important; }
+        body.dark-mode .powertoys-block > div > p { color: #9e855a !important; }
+        body.dark-mode .powertoys-inner-box { background: rgba(0,0,0,0.2) !important; border-color: rgba(255,255,255,0.07) !important; }
+        body.dark-mode .powertoys-inner-box h3, body.dark-mode .powertoys-inner-box strong { color: #c9a96e !important; }
+        body.dark-mode .powertoys-inner-box p, body.dark-mode .powertoys-inner-box a { color: #9e855a !important; }
+        body.dark-mode .powertoys-tile { background: rgba(0,0,0,0.2) !important; border-color: rgba(255,255,255,0.07) !important; }
+        body.dark-mode .powertoys-tile strong { color: #c9a96e !important; }
+        body.dark-mode .powertoys-tile .tile-shortcut { color: #7a6535 !important; }
+        body.dark-mode .powertoys-tile .tile-desc { color: #8a7355 !important; }
+        /* ── La Digitale block ── */
+        .digitale-block {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-radius: 16px; padding: 2.5rem; margin-top: 3rem; margin-bottom: 3rem;
+            border: 1px solid #6ee7b7;
+            box-shadow: 0 8px 24px rgba(16,185,129,0.12);
         }
-
-        body.dark-mode {
-            --bg-light: #1a1a1a;
-            --bg-card: #2a2a2a;
-            --text-dark: #f5f5f5;
-            --text-medium: #d1d1d1;
-            --text-light: #a8a8a8;
-            --border: #404040;
+        .digitale-tile {
+            background: rgba(255,255,255,0.55); padding: 1.25rem;
+            border-radius: 10px; border: 1px solid rgba(16,185,129,0.2);
         }
-
-        body.dark-mode .hero {
-            background: linear-gradient(135deg, #0f1c2e 0%, #1a2942 100%);
+        .digitale-cta {
+            font-size: 0.82rem; padding: 0.45rem 0.75rem; border-radius: 6px;
+            background: #0f766e !important; color: #fff; font-weight: 600; line-height: 1.2;
         }
-
-        body.dark-mode .tips-section {
-            background: #2a2a2a;
-            border-color: #404040;
-        }
-
-        body.dark-mode .workflow {
-            background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
-            border-color: #f59e0b;
-        }
-
-        body.dark-mode .tip-item {
-            background: #1a1a1a;
-            border-color: #404040;
-        }
-
-        body.dark-mode .card {
-            box-shadow: 0 1px 3px rgba(255,255,255,0.05);
-        }
-
-        body.dark-mode .card:hover {
-            box-shadow: 0 12px 24px rgba(255,255,255,0.1);
-        }
-
-        body.dark-mode .feedback-section {
-            background: linear-gradient(135deg, #052e16 0%, #064e3b 100%) !important;
-            border-color: #065f46 !important;
-        }
-
-        body.dark-mode .powertoys-block {
-            background: linear-gradient(135deg, #2a2318 0%, #302a1e 100%) !important;
-            border-color: #4a3f2a !important;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
-        }
-
-        body.dark-mode .powertoys-block h2 {
-            color: #c9a96e !important;
-        }
-
-        body.dark-mode .powertoys-block > div > p {
-            color: #9e855a !important;
-        }
-
-        body.dark-mode .powertoys-inner-box {
-            background: rgba(0,0,0,0.2) !important;
-            border-color: rgba(255,255,255,0.07) !important;
-        }
-
-        body.dark-mode .powertoys-inner-box h3,
-        body.dark-mode .powertoys-inner-box strong {
-            color: #c9a96e !important;
-        }
-
-        body.dark-mode .powertoys-inner-box p,
-        body.dark-mode .powertoys-inner-box a {
-            color: #9e855a !important;
-        }
-
-        body.dark-mode .powertoys-tile {
-            background: rgba(0,0,0,0.2) !important;
-            border-color: rgba(255,255,255,0.07) !important;
-        }
-
-        body.dark-mode .powertoys-tile strong {
-            color: #c9a96e !important;
-        }
-
-        body.dark-mode .powertoys-tile .tile-shortcut {
-            color: #7a6535 !important;
-        }
-
-        body.dark-mode .powertoys-tile .tile-desc {
-            color: #8a7355 !important;
-        }
-
-        body.dark-mode .feedback-section h2 {
-            color: #6ee7b7 !important;
-        }
-
-        body.dark-mode .feedback-section p {
-            color: #a7f3d0 !important;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50px;
-            padding: 12px 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
+        .digitale-cta:hover { background: #0b5f59 !important; transform: none !important; }
+        .digitale-open-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-        }
-
-        body.dark-mode .theme-toggle {
-            background: rgba(42, 42, 42, 0.9);
-            color: white;
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2c4f75 100%);
-            color: white;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.4;
-        }
-
-        .hero-content {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Encadré sobre pour les infos secondaires de la bannière */
-        .hero-meta {
-            display: inline-block;
-            margin-top: 1.25rem;
-            padding: 0.6rem 1.25rem;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.07);
-        }
-
-        .hero-meta p {
-            font-size: 0.88rem;
-            opacity: 0.75;
-            font-weight: 400;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        h1 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .subtitle {
+            justify-content: center;
+            text-decoration: none;
+            color: #111827;
             font-size: 1.1rem;
-            opacity: 0.95;
-            font-weight: 400;
+            line-height: 1;
+            padding: 0.35rem 0.5rem;
+            border-radius: 999px;
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
+        .digitale-open-btn:link,
+        .digitale-open-btn:visited,
+        .digitale-open-btn:hover,
+        .digitale-open-btn:active {
+            color: #111827;
         }
-
-        .intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
+        .digitale-open-btn:hover {
+            transform: translateY(-1px) scale(1.06);
+            box-shadow: 0 5px 12px rgba(16,185,129,0.25);
+            background: #bbf7d0;
         }
+        body.dark-mode .digitale-block { background: linear-gradient(135deg, #1a2e1a 0%, #1e3520 100%) !important; border-color: #2d5a2d !important; }
+        body.dark-mode .digitale-block h2 { color: #6ee7b7 !important; }
+        body.dark-mode .digitale-block > div > p { color: #a7f3d0 !important; }
+        body.dark-mode .digitale-tile { background: rgba(0,0,0,0.2) !important; border-color: rgba(255,255,255,0.07) !important; }
+        body.dark-mode .digitale-tile strong { color: #6ee7b7 !important; }
+        body.dark-mode .digitale-tile p { color: #a7f3d0 !important; }
+        .feedback-section { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 2.5rem; margin-top: 3rem; margin-bottom: 2rem; border: 2px solid #86efac; }
+        .feedback-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 1.25rem; }
+        .feedback-card { text-align: center; background: rgba(255,255,255,0.55); border: 1px solid rgba(34,197,94,0.25); border-radius: 14px; padding: 1.5rem; }
+        .feedback-title { font-family:'Crimson Pro',serif; font-size:2rem; color:#166534; margin-bottom:1rem; }
+        .feedback-text { color:#15803d; font-size:1.1rem; line-height:1.7; max-width:700px; margin:0 auto 1.5rem; }
+        .feedback-text-small { color:#15803d; font-size:1rem; line-height:1.7; max-width:700px; margin:0 auto 1.5rem; }
+        .btn-secondary.feedback-btn { background: linear-gradient(135deg,#22c55e 0%,#16a34a 100%); border: none !important; font-size: 1.1rem; padding: 1rem 2rem; display: inline-flex; align-items: center; gap: 0.75rem; box-shadow: 0 4px 12px rgba(34,197,94,0.3); cursor: pointer; text-decoration: none; color: #ffffff; transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; }
+        .btn-secondary.feedback-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(34,197,94,0.35); filter: brightness(1.03); background: linear-gradient(135deg,#22c55e 0%,#16a34a 100%) !important; color: #ffffff !important; border: none !important; }
+        body.dark-mode .toc { background: #2a2a2a; border-color: #404040; }
+        body.dark-mode .toc-item { color: var(--text-medium); }
+        body.dark-mode .toc-item:hover { background: #1a1a1a; }
 
-        .intro h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+        /* ── TOC ── */
+        .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem 2rem; margin-bottom: 3rem; }
+        .toc h3 { font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; color: var(--text-dark); }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem; }
+        .toc-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; border-radius: 8px; text-decoration: none; color: var(--text-medium); border: 1px solid transparent; font-size: 0.9rem; font-weight: 500; transition: all 0.2s ease; }
+        .toc-item:hover { background: var(--bg-light); border-color: var(--border); color: var(--primary); }
 
-        .intro p {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            line-height: 1.8;
-        }
+        /* ── Back to TOC ── */
+        .back-to-toc { display: flex; justify-content: center; margin-top: 1.5rem; }
+        .back-to-toc a { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--text-light); text-decoration: none; padding: 0.35rem 0.85rem; border: 1px solid var(--border); border-radius: 20px; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+        .back-to-toc a:hover { color: var(--primary); border-color: var(--primary); background: var(--bg-light); }
 
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid;
-        }
+        /* ── Badges ── */
+        .badge { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 4px; margin-left: 0.4rem; vertical-align: middle; }
+        .badge-new { background: #dcfce7; color: #166534; }
+        .badge-tip { background: #fef3c7; color: #92400e; }
+        .badge-w11 { background: #dbeafe; color: #1e40af; }
 
+        /* ── Keyboard tooltip ── */
+        .kbd-tooltip { position: absolute; z-index: 9999; background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); pointer-events: none; opacity: 0; transform: translateY(6px); transition: opacity 0.15s ease, transform 0.15s ease; width: 300px; }
+        .kbd-tooltip.visible { opacity: 1; transform: translateY(0); }
+        .kbd-tooltip canvas { width: 100%; height: auto; display: block; border-radius: 5px; }
+        .kbd-tooltip-label { color: #94a3b8; font-size: 0.72rem; text-align: center; margin-top: 6px; font-family: 'DM Sans', sans-serif; letter-spacing: 0.03em; }
+        .tip-item:hover .tip-shortcut { background: #0d9488; }
+        .shortcut-tag { transition: box-shadow 0.15s, background 0.15s; cursor: default; }
+        .shortcut-tag:hover { box-shadow: 0 0 0 2px #38bdf8; }
+        .tile-shortcut { transition: box-shadow 0.15s, background 0.15s; border-radius: 6px; display: inline-block; padding: 0.15rem 0.45rem; cursor: default; }
+        .tile-shortcut:hover { box-shadow: 0 0 0 2px #38bdf8; }
+
+        /* ── Theme toggle ── */
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255,255,255,0.9); border: none; border-radius: 50px; padding: 12px 20px; cursor: pointer; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; }
+        body.dark-mode .theme-toggle { background: rgba(42,42,42,0.9); color: white; }
+        .theme-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+
+        /* ── Hero ── */
+        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2c4f75 100%); color: white; padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.4; }
+        .hero-content { position: relative; max-width: 900px; margin: 0 auto; }
+        .hero-meta { display: inline-block; margin-top: 1.25rem; padding: 0.6rem 1.25rem; border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; background: rgba(255,255,255,0.07); }
+        .hero-meta p { font-size: 0.88rem; opacity: 0.75; font-weight: 400; line-height: 1.5; margin: 0; }
+        h1 { font-family: 'Crimson Pro', serif; font-size: 2.75rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .subtitle { font-size: 1.1rem; opacity: 0.95; font-weight: 400; }
+
+        /* ── Layout ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+        .intro { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+        .intro h2 { font-family: 'Crimson Pro', serif; font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
+        .intro p { font-size: 1.1rem; color: var(--text-medium); line-height: 1.8; }
+
+        /* ── Section headers ── */
+        .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 3px solid; }
         .section-privacy .section-header { border-color: var(--privacy); }
         .section-visual .section-header { border-color: var(--visual); }
         .section-setup .section-header { border-color: var(--setup); }
-
-        .section-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-        }
-
+        .section-icon { width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; }
         .section-privacy .section-icon { background: var(--privacy); }
         .section-visual .section-icon { background: var(--visual); }
         .section-setup .section-icon { background: var(--setup); }
+        .section-header h2 { font-family: 'Crimson Pro', serif; font-size: 2.25rem; font-weight: 700; }
+        .section-description { font-size: 1.1rem; color: var(--text-medium); margin-bottom: 2rem; line-height: 1.7; }
 
-        .section-header h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2.25rem;
-            font-weight: 700;
-        }
+        /* ── Cards ── */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+        .card { background: var(--bg-card); border-radius: 16px; padding: 1.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid var(--border); transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+        .card-icon { font-size: 2rem; flex-shrink: 0; }
+        .card h3 { font-family: 'Crimson Pro', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-dark); }
+        .card-description { color: var(--text-medium); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; }
+        .card-actions { display: flex; flex-direction: column; gap: 0.5rem; }
 
-        .section-description {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
+        /* ── Buttons ── */
+        .btn { padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; text-align: center; transition: all 0.2s ease; cursor: pointer; border: none; font-size: 0.95rem; font-family: 'DM Sans', sans-serif; line-height: 1.4; letter-spacing: 0; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--secondary); transform: translateY(-2px); }
+        .section-privacy .btn-primary { background: var(--privacy); }
+        .section-privacy .btn-primary:hover { background: #7c3aed; }
+        .section-setup .btn-primary { background: var(--setup); }
+        .section-setup .btn-primary:hover { background: #d97706; }
+        .btn-secondary { background: var(--bg-light); color: var(--text-dark); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: var(--bg-card); border-color: var(--primary); }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
+        /* ── Shortcut tag ── */
+        .shortcut-tag { display: inline-block; background: #10b981; color: white; padding: 0.35rem 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .resource-link { color: var(--primary); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .resource-link:hover { text-decoration: underline; }
 
-        .card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.75rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
+        /* ── Tips section ── */
+        .tips-section { background: white; border-radius: 16px; padding: 2.5rem; margin-top: 3rem; border: 2px solid var(--border); }
+        body.dark-mode .tips-section { background: #2a2a2a; border-color: #404040; }
+        .tips-section h2 { font-family: 'Crimson Pro', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .tip-item { background: var(--bg-light); padding: 1rem 1.25rem; border-radius: 10px; margin-bottom: 0.75rem; display: flex; gap: 1rem; align-items: center; border: 1px solid var(--border); }
+        body.dark-mode .tip-item { background: #1a1a1a; border-color: #404040; }
+        .tip-shortcut { background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-family: 'Courier New', monospace; font-weight: 700; font-size: 0.9rem; min-width: 160px; text-align: center; cursor: default; transition: background 0.15s; }
+        .tip-description { color: var(--text-medium); font-size: 0.95rem; }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-        }
-
-        .card h3 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .card-description {
-            color: var(--text-medium);
-            margin-bottom: 1.25rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .card-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 0.95rem;
-            font-family: 'DM Sans', sans-serif;
-            line-height: 1.4;
-            letter-spacing: 0;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .section-privacy .btn-primary {
-            background: var(--privacy);
-        }
-
-        .section-privacy .btn-primary:hover {
-            background: #7c3aed;
-        }
-
-        .section-setup .btn-primary {
-            background: var(--setup);
-        }
-
-        .section-setup .btn-primary:hover {
-            background: #d97706;
-        }
-
-        .btn-secondary {
-            background: var(--bg-light);
-            color: var(--text-dark);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-card);
-            border-color: var(--primary);
-        }
-
-        .shortcut-tag {
-            display: inline-block;
-            background: #10b981;
-            color: white;
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .resource-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .resource-link:hover {
-            text-decoration: underline;
-        }
-
-        .tips-section {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-top: 3rem;
-            border: 2px solid var(--border);
-        }
-
-        body.dark-mode .tips-section {
-            background: #2a2a2a;
-            border-color: #404040;
-        }
-
-        .tips-section h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .tip-item {
-            background: var(--bg-light);
-            padding: 1rem 1.25rem;
-            border-radius: 10px;
-            margin-bottom: 0.75rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            border: 1px solid var(--border);
-        }
-
-        body.dark-mode .tip-item {
-            background: #1a1a1a;
-            border-color: #404040;
-        }
-
-        .tip-shortcut {
-            background: #10b981;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            font-size: 0.9rem;
-            min-width: 160px;
-            text-align: center;
-        }
-
-        .tip-description {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-        }
-
-        .workflow {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-top: 3rem;
-            border: 3px solid #f59e0b;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
-        }
-
-        body.dark-mode .workflow {
-            background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
-            border-color: #f59e0b;
-        }
-
-        .workflow h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #92400e;
-        }
-
-        body.dark-mode .workflow h2 {
-            color: #fbbf24;
-        }
-
-        .workflow-steps {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .workflow-step {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            background: var(--accent);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .step-content h3 {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .step-content p {
-            color: var(--text-medium);
-            line-height: 1.6;
-        }
+        /* ── Workflow ── */
+        .workflow { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 16px; padding: 2.5rem; margin-top: 3rem; border: 3px solid #f59e0b; box-shadow: 0 4px 12px rgba(245,158,11,0.15); }
+        body.dark-mode .workflow { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); border-color: #f59e0b; }
+        .workflow h2 { font-family: 'Crimson Pro', serif; font-size: 2rem; margin-bottom: 1.5rem; color: #92400e; }
+        body.dark-mode .workflow h2 { color: #fbbf24; }
+        .workflow-steps { display: grid; gap: 1.5rem; }
+        .workflow-step { display: flex; gap: 1.5rem; align-items: flex-start; }
+        .step-number { background: var(--accent); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+        .step-content h3 { font-weight: 600; margin-bottom: 0.5rem; color: var(--text-dark); }
+        .step-content p { color: var(--text-medium); line-height: 1.6; }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tip-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .tip-shortcut {
-                min-width: auto;
-            }
+            h1 { font-size: 2.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .tip-item { flex-direction: column; align-items: flex-start; }
+            .tip-shortcut { min-width: auto; }
+            .toc-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -560,7 +225,7 @@
             <h1><img src="https://upload.wikimedia.org/wikipedia/fr/7/73/Logo-C%C3%A9gep_G%C3%A9rald-Godin.svg" alt="Cégep Gérald-Godin" style="height: 60px; vertical-align: middle; margin-right: 15px;">Trousse techno en classe</h1>
             <p class="subtitle">Bonnes pratiques et outils pour enseigner efficacement en classe</p>
             <div class="hero-meta">
-                <p>Cégep Gérald-Godin</p>
+                <p style="font-size: 1.1rem;"><strong>Cégep Gérald-Godin</strong></p>
                 <p>Conçu par le service du développement pédagogique</p>
             </div>
         </div>
@@ -572,13 +237,40 @@
             <p>Cette trousse rassemble des trucs et astuces pratiques pour configurer l'ordinateur en mode présentation. Explorez les outils disponibles, apprenez les raccourcis essentiels, et découvrez comment protéger votre vie privée tout en offrant une expérience optimale en classe.</p>
         </div>
 
+        <!-- TABLE DES MATIÈRES -->
+        <div class="toc" id="toc">
+            <h3>📋 Contenu de la trousse</h3>
+            <div class="toc-grid">
+                <a class="toc-item" href="#section-visual">
+                    <span>👁️</span> Visuel &amp; Accessibilité
+                </a>
+                <a class="toc-item" href="#section-privacy">
+                    <span>🔒</span> Vie Privée &amp; Confidentialité
+                </a>
+                <a class="toc-item" href="#section-setup">
+                    <span>📽️</span> Configuration Présentation
+                </a>
+                <a class="toc-item" href="#shortcuts-section">
+                    <span>⌨️</span> Raccourcis essentiels
+                </a>
+                <a class="toc-item" href="#powertoys-section">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/2020_PowerToys_Icon.svg" alt="PowerToys" style="width:18px;height:18px;vertical-align:middle;">
+                    PowerToys
+                </a>
+                <a class="toc-item" href="#ladigitale-section">
+                    <span>🎲</span> La Digitale
+                </a>
+                <a class="toc-item" href="#workflow-section">
+                    <span>⚡</span> Préparation de cours recommandée
+                </a>
+            </div>
+        </div>
+
         <!-- Section 1: Visuel & Accessibilité -->
-        <section class="section-visual">
+        <section id="section-visual" class="section-visual" style="scroll-margin-top:80px;">
             <div class="section-header">
                 <div class="section-icon">👁️</div>
-                <div>
-                    <h2>Visuel & Accessibilité</h2>
-                </div>
+                <div><h2>Visuel &amp; Accessibilité</h2></div>
             </div>
             <p class="section-description">
                 Optimisez la visibilité pour les étudiant(e)s. Augmentez la taille des éléments, utilisez des indicateurs visuels et facilitez le suivi du curseur pour une meilleure expérience d'apprentissage.
@@ -588,13 +280,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🖱️</div>
-                        <div>
-                            <h3>Pointeur de souris</h3>
-                        </div>
+                        <div><h3>Pointeur de souris</h3></div>
                     </div>
-                    <p class="card-description">
-                        Choisissez un pointeur de couleur vive et plus gros pour une meilleure visibilité sur grand écran. Essentiel pour que les étudiant(e)s suivent les actions.
-                    </p>
+                    <p class="card-description">Choisissez un pointeur de couleur vive et plus gros pour une meilleure visibilité sur grand écran. Essentiel pour que les étudiant(e)s suivent les actions.</p>
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.open('ms-settings:easeofaccess-mousepointer')">Ouvrir paramètres</button>
                     </div>
@@ -603,13 +291,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon"><img src="https://www.svgrepo.com/show/379684/text-cursor.svg" alt="curseur texte" style="width:2rem;height:2rem;"></div>
-                        <div>
-                            <h3>Curseur de texte</h3>
-                        </div>
+                        <div><h3>Curseur de texte</h3></div>
                     </div>
-                    <p class="card-description">
-                        Personnalisez la couleur et la taille du curseur de texte pour une meilleure visibilité lors de la saisie.
-                    </p>
+                    <p class="card-description">Personnalisez la couleur et la taille du curseur de texte pour une meilleure visibilité lors de la saisie.</p>
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.open('ms-settings:easeofaccess-cursor')">Ouvrir paramètres</button>
                     </div>
@@ -623,9 +307,7 @@
                             <span class="shortcut-tag">Win + (plus)</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Agrandissez instantanément n'importe quelle partie de l'écran. Win + (plus) pour agrandir, Win + (moins) pour réduire, Win + Échap pour quitter.
-                    </p>
+                    <p class="card-description">Agrandissez instantanément n'importe quelle partie de l'écran. Win + (plus) pour agrandir, Win + (moins) pour réduire, Win + Échap pour quitter.</p>
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.open('ms-settings:easeofaccess-magnifier')">Ouvrir paramètres</button>
                         <button class="btn btn-secondary" onclick="alert('Win + (plus) = Agrandir\nWin + (moins) = Réduire\nWin + Échap = Quitter la loupe')">Voir raccourcis</button>
@@ -636,13 +318,11 @@
                     <div class="card-header">
                         <div class="card-icon">✨</div>
                         <div>
-                            <h3>Clics visuels PowerToys</h3>
+                            <h3>Clics visuels PowerToys <span class="badge badge-tip">PowerToys</span></h3>
                             <span class="shortcut-tag">Win + MAJ + H</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Affiche des cercles colorés lors des clics (jaune = gauche, bleu = droit). Les étudiant(e)s voient exactement où les clics se produisent.
-                    </p>
+                    <p class="card-description">Affiche des cercles colorés lors des clics (jaune = gauche, bleu = droit). Les étudiant(e)s voient exactement où les clics se produisent.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="document.getElementById('powertoys-section').scrollIntoView({behavior: 'smooth'})">Voir section PowerToys ↓</button>
                     </div>
@@ -652,13 +332,11 @@
                     <div class="card-header">
                         <div class="card-icon">⭕</div>
                         <div>
-                            <h3>Localisateur souris</h3>
+                            <h3>Localisateur souris <span class="badge badge-tip">PowerToys</span></h3>
                             <span class="shortcut-tag">Ctrl + Ctrl</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Appuyez 2 fois sur Ctrl pour afficher un cercle blanc autour du curseur. Idéal pour retrouver la souris rapidement sur grand écran.
-                    </p>
+                    <p class="card-description">Appuyez 2 fois sur Ctrl pour afficher un cercle blanc autour du curseur. Idéal pour retrouver la souris rapidement sur grand écran.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="document.getElementById('powertoys-section').scrollIntoView({behavior: 'smooth'})">Voir section PowerToys ↓</button>
                     </div>
@@ -667,13 +345,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🎨</div>
-                        <div>
-                            <h3>Thème clair</h3>
-                        </div>
+                        <div><h3>Thème clair</h3></div>
                     </div>
-                    <p class="card-description">
-                        Basculez en mode clair pour une meilleure lisibilité lors de la projection. Le contraste est supérieur sur projecteur.
-                    </p>
+                    <p class="card-description">Basculez en mode clair pour une meilleure lisibilité lors de la projection. Le contraste est supérieur sur projecteur.</p>
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.open('ms-settings:colors')">Ouvrir paramètres</button>
                     </div>
@@ -682,13 +356,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🔤</div>
-                        <div>
-                            <h3>Taille du texte</h3>
-                        </div>
+                        <div><h3>Taille du texte</h3></div>
                     </div>
-                    <p class="card-description">
-                        Augmentez la taille du texte système pour améliorer la lisibilité à distance. Recommandé : 125 % ou 150 %.
-                    </p>
+                    <p class="card-description">Augmentez la taille du texte système pour améliorer la lisibilité à distance. Recommandé : 125 % ou 150 %.</p>
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.open('ms-settings:easeofaccess-display')">Ouvrir paramètres</button>
                     </div>
@@ -697,27 +367,22 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🖱️</div>
-                        <div>
-                            <h3>Souris sans-fil pour diaporama</h3>
-                        </div>
+                        <div><h3>Souris sans-fil pour diaporama</h3></div>
                     </div>
-                    <p class="card-description">
-                        Utilisez une souris sans-fil pour changer de diapositive. Astuce : Dans PowerPoint, désactivez le menu contextuel (clic droit) pour utiliser le bouton droit comme retour arrière.
-                    </p>
+                    <p class="card-description">Utilisez une souris sans-fil pour changer de diapositive. Astuce : Dans PowerPoint, désactivez le menu contextuel (clic droit) pour utiliser le bouton droit comme retour arrière.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('PowerPoint → Fichier → Options → Options avancées → Diaporama\n\nDécochez \'Afficher le menu contextuel au clic droit\'\n\nLe bouton droit servira maintenant à revenir en arrière dans le diaporama.')">Plus d'informations</button>
                     </div>
                 </div>
             </div>
+            <div class="back-to-toc"><a href="#toc">↑ Retour au menu</a></div>
         </section>
 
         <!-- Section 2: Vie Privée & Confidentialité -->
-        <section class="section-privacy">
+        <section id="section-privacy" class="section-privacy" style="scroll-margin-top:80px; margin-top:3rem;">
             <div class="section-header">
                 <div class="section-icon">🔒</div>
-                <div>
-                    <h2>Vie Privée & Confidentialité</h2>
-                </div>
+                <div><h2>Vie Privée &amp; Confidentialité</h2></div>
             </div>
             <p class="section-description">
                 Protégez les informations personnelles et évitez les distractions pendant les cours. Ces outils aident à présenter du contenu sans exposer la navigation privée, les favoris personnels ou les notifications.
@@ -732,11 +397,20 @@
                             <span class="shortcut-tag">Ctrl + MAJ + B</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Masquez la barre de favoris pour éviter d'exposer des sites personnels. Le raccourci fonctionne instantanément dans Edge.
-                    </p>
+                    <p class="card-description">Masquez la barre de favoris pour éviter d'exposer des sites personnels. Le raccourci fonctionne instantanément dans Edge.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Dans Edge, appuyez sur Ctrl+MAJ+B pour basculer la barre de favoris.')">Plus d'informations</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👤</div>
+                        <div><h3><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" alt="Edge" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">Edge : Profils séparés</h3></div>
+                    </div>
+                    <p class="card-description">Créez un profil "Travail" et un profil "Personnel". Les favoris, historique, extensions et mots de passe restent complètement isolés entre les profils.</p>
+                    <div class="card-actions">
+                        <a href="https://support.microsoft.com/fr-fr/microsoft-edge/se-connecter-et-cr%C3%A9er-plusieurs-profils-dans-microsoft-edge-df94e622-2061-49ae-ad1d-6f0e43ce6435" target="_blank" class="btn btn-primary">Guide sur profils Edge</a>
                     </div>
                 </div>
 
@@ -748,9 +422,7 @@
                             <span class="shortcut-tag">Win + N</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Activez le mode Focus pour bloquer les notifications et éviter les interruptions pendant vos présentations.
-                    </p>
+                    <p class="card-description">Activez le mode Focus pour bloquer les notifications et éviter les interruptions pendant vos présentations.</p>
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.open('ms-settings:notifications')">Ouvrir Paramètres</button>
                         <button class="btn btn-secondary" onclick="alert('Appuyez sur Win+N puis cliquez sur l\'icône Focus dans le centre de notifications.')">Plus d'informations</button>
@@ -760,13 +432,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🖥️</div>
-                        <div>
-                            <h3>Icônes du Bureau</h3>
-                        </div>
+                        <div><h3>Icônes du Bureau</h3></div>
                     </div>
-                    <p class="card-description">
-                        Masquez les icônes du bureau pour une présentation plus propre et éviter d'exposer des fichiers personnels.
-                    </p>
+                    <p class="card-description">Masquez les icônes du bureau pour une présentation plus propre et éviter d'exposer des fichiers personnels.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Clic droit sur le bureau → Affichage → Décocher \'Afficher les icônes du bureau\'')">Plus d'informations</button>
                     </div>
@@ -775,13 +443,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Microsoft_Office_Teams_%282025%E2%80%93present%29.svg" alt="Teams" style="width:2rem;height:2rem;"></div>
-                        <div>
-                            <h3>Aperçu des messages Teams</h3>
-                        </div>
+                        <div><h3>Aperçu des messages Teams</h3></div>
                     </div>
-                    <p class="card-description">
-                        Par défaut, Teams affiche un aperçu du message en bas à droite de l'écran. Si un collègue vous envoie un message d'ordre privé pendant que vous projetez, tout le monde le verra. Désactivez les aperçus dans les paramètres Teams.
-                    </p>
+                    <p class="card-description">Par défaut, Teams affiche un aperçu du message en bas à droite de l'écran. Si un collègue vous envoie un message d'ordre privé pendant que vous projetez, tout le monde le verra. Désactivez les aperçus dans les paramètres Teams.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Dans Teams :\n1. Cliquez sur votre photo de profil\n2. Paramètres → Notifications\n3. Sous Apparence et son, désactivez :\n   Afficher l\'aperçu du message dans les notifications')">Plus d'informations</button>
                     </div>
@@ -790,13 +454,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Microsoft_Outlook_Icon_%282025%E2%80%93present%29.svg" alt="Outlook" style="width:2rem;height:2rem;"></div>
-                        <div>
-                            <h3>Aperçu des courriels Outlook</h3>
-                        </div>
+                        <div><h3>Aperçu des courriels Outlook</h3></div>
                     </div>
-                    <p class="card-description">
-                        Outlook affiche lui aussi un aperçu des courriels entrants en bas à droite de l'écran — objet et début du message inclus. Désactivez-le pour éviter qu'un courriel délicat s'affiche devant la classe.
-                    </p>
+                    <p class="card-description">Outlook affiche lui aussi un aperçu des courriels entrants en bas à droite de l'écran — objet et début du message inclus. Désactivez-le pour éviter qu'un courriel délicat s'affiche devant la classe.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Dans Outlook :\nFichier → Options → Courrier\nSous Réception des messages, décochez :\n- Afficher une alerte sur le Bureau\n- Afficher une enveloppe dans la barre des tâches\n\nRapide : cliquez sur une notif Outlook → Désactiver les alertes')">Plus d'informations</button>
                     </div>
@@ -805,13 +465,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🔇</div>
-                        <div>
-                            <h3>Notifications sonores</h3>
-                        </div>
+                        <div><h3>Notifications sonores</h3></div>
                     </div>
-                    <p class="card-description">
-                        Un « ding » de Teams ou d'Outlook en plein exposé brise la concentration de tout le monde. Coupez le son des notifications indépendamment du volume général pour garder le contrôle.
-                    </p>
+                    <p class="card-description">Un « ding » de Teams ou d'Outlook en plein exposé brise la concentration de tout le monde. Coupez le son des notifications indépendamment du volume général pour garder le contrôle.</p>
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.open('ms-settings:notifications')">Paramètres notifications</button>
                         <button class="btn btn-secondary" onclick="alert('Teams :\nPhoto de profil → Paramètres → Notifications → désactivez Activer les sons\n\nOutlook :\nFichier → Options → Courrier → décochez Émettre un son\n\nAlternative : clic droit sur icône 🔊 → Mélangeur de volume → mettre Teams et Outlook à zéro')">Détail par application</button>
@@ -821,13 +477,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🔎</div>
-                        <div>
-                            <h3>Historique dans la barre d'adresse</h3>
-                        </div>
+                        <div><h3>Historique dans la barre d'adresse</h3></div>
                     </div>
-                    <p class="card-description">
-                        Dès que vous commencez à taper dans la barre d'adresse d'Edge, le navigateur suggère des sites visités récemment. Supprimez l'historique avant le cours ou utilisez un profil dédié à l'enseignement.
-                    </p>
+                    <p class="card-description">Dès que vous commencez à taper dans la barre d'adresse d'Edge, le navigateur suggère des sites visités récemment. Supprimez l'historique avant le cours ou utilisez un profil dédié à l'enseignement.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Effacer l\'historique dans Edge :\nCtrl + MAJ + Suppr\n→ Historique de navigation → Effacer maintenant\n\nSolution durable :\nUtilisez un profil Edge séparé pour l\'enseignement — l\'historique personnel ne s\'y affichera jamais.')">Plus d'informations</button>
                     </div>
@@ -836,13 +488,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">🔍</div>
-                        <div>
-                            <h3>Suggestions de recherche Google / Bing</h3>
-                        </div>
+                        <div><h3>Suggestions de recherche Google / Bing</h3></div>
                     </div>
-                    <p class="card-description">
-                        Les moteurs de recherche mémorisent vos recherches passées et les proposent en autocomplétion. Effacez l'historique de recherche ou utilisez une fenêtre de navigation privée (Ctrl + MAJ + N) pour les démonstrations — aucune suggestion personnelle ne s'affiche.
-                    </p>
+                    <p class="card-description">Les moteurs de recherche mémorisent vos recherches passées et les proposent en autocomplétion. Effacez l'historique de recherche ou utilisez une fenêtre de navigation privée (Ctrl + MAJ + N) pour les démonstrations — aucune suggestion personnelle ne s'affiche.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Google : myaccount.google.com → Données et confidentialité → Historique des recherches → Supprimer\n\nBing : bing.com → ☰ → Historique de recherche → Tout effacer\n\nAlternative rapide : Ctrl + MAJ + N dans Edge ouvre une fenêtre privée — aucune suggestion ne s\'affiche.')">Plus d'informations</button>
                     </div>
@@ -852,15 +500,14 @@
                     <div class="card-header">
                         <div class="card-icon">🗂️</div>
                         <div>
-                            <h3>Bureaux Virtuels</h3>
+                            <h3>Bureaux virtuels</h3>
                             <span class="shortcut-tag">Win + Tab</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Créez un bureau dédié à l'enseignement, séparé de vos espaces personnels. Naviguez entre bureaux avec Win + Ctrl + ← ou Win + Ctrl + →.
-                    </p>
+                    <p class="card-description">Créez un bureau dédié à l'enseignement, séparé de vos espaces personnels. Naviguez entre bureaux avec Win + Ctrl + ← ou Win + Ctrl + →.</p>
                     <div class="card-actions">
-                        <a href="https://support.microsoft.com/fr-fr/windows/configurer-plusieurs-bureaux-dans-windows-36f52e38-5b4a-557b-2ff9-e1a60c976434" target="_blank" class="btn btn-primary">📚 Guide Microsoft</a>
+                        <a href="https://support.microsoft.com/fr-fr/windows/configurer-plusieurs-bureaux-dans-windows-36f52e38-5b4a-557b-2ff9-e1a60c976434" target="_blank" class="btn btn-primary">Guide sur Bureaux virtuels</a>
+                        <button class="btn btn-secondary" onclick="alert('Win + Tab → Nouveau bureau (en haut)\nWin + Ctrl + D = créer un bureau\nWin + Ctrl + ← / → = naviguer\nWin + Ctrl + F4 = fermer le bureau actif')">Voir raccourcis</button>
                     </div>
                 </div>
 
@@ -872,53 +519,32 @@
                             <span class="shortcut-tag">Ctrl + MAJ + Y</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Organisez les ressources pédagogiques dans des collections privées. Parfait pour préparer les cours sans mélanger avec la navigation personnelle.
-                    </p>
+                    <p class="card-description">Organisez les ressources pédagogiques dans des collections privées. Parfait pour préparer les cours sans mélanger avec la navigation personnelle.</p>
                     <div class="card-actions">
-                        <a href="https://support.microsoft.com/fr-fr/microsoft-edge/organiser-vos-id%C3%A9es-avec-les-collections-dans-microsoft-edge-60fd7bba-6cfd-00b9-3787-b197231b507e" target="_blank" class="btn btn-primary">📚 Guide Collections</a>
+                        <a href="https://support.microsoft.com/fr-fr/microsoft-edge/organiser-vos-id%C3%A9es-avec-les-collections-dans-microsoft-edge-60fd7bba-6cfd-00b9-3787-b197231b507e" target="_blank" class="btn btn-primary">Guide sur Collections</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">💼</div>
-                        <div>
-                            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" alt="Edge" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">Edge : Espaces de travail</h3>
-                        </div>
+                        <div><h3><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" alt="Edge" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">Edge : Espaces de travail</h3></div>
                     </div>
-                    <p class="card-description">
-                        Les espaces de travail permettent de partager un groupe d'onglets en temps réel avec d'autres personnes. Idéal pour co-naviguer avec les étudiant(e)s : tout le monde voit les mêmes pages en même temps, sans avoir à envoyer de liens.
-                    </p>
+                    <p class="card-description">Les espaces de travail permettent de partager un groupe d'onglets en temps réel avec d'autres personnes. Idéal pour co-naviguer avec les étudiant(e)s : tout le monde voit les mêmes pages en même temps, sans avoir à envoyer de liens.</p>
                     <div class="card-actions">
-                        <a href="https://www.microsoft.com/fr-fr/edge/features/workspaces" target="_blank" class="btn btn-primary">📚 Guide Espaces de travail</a>
+                        <a href="https://www.microsoft.com/fr-fr/edge/features/workspaces" target="_blank" class="btn btn-primary">Guide sur Espaces de travail</a>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">👤</div>
-                        <div>
-                            <h3><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" alt="Edge" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">Edge : Profils séparés</h3>
-                        </div>
-                    </div>
-                    <p class="card-description">
-                        Créez un profil "Travail" et un profil "Personnel". Les favoris, historique, extensions et mots de passe restent complètement isolés entre les profils.
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://support.microsoft.com/fr-fr/microsoft-edge/se-connecter-et-cr%C3%A9er-plusieurs-profils-dans-microsoft-edge-df94e622-2061-49ae-ad1d-6f0e43ce6435" target="_blank" class="btn btn-primary">📚 Guide profils Edge</a>
-                </div>
-                </div>
             </div>
+            <div class="back-to-toc"><a href="#toc">↑ Retour au menu</a></div>
         </section>
 
         <!-- Section 3: Configuration Présentation -->
-        <section class="section-setup">
+        <section id="section-setup" class="section-setup" style="scroll-margin-top:80px; margin-top:3rem;">
             <div class="section-header">
                 <div class="section-icon">📽️</div>
-                <div>
-                    <h2>Configuration Présentation</h2>
-                </div>
+                <div><h2>Configuration Présentation</h2></div>
             </div>
             <p class="section-description">
                 Gérez efficacement les écrans et l'espace de travail. Connectez-vous aux projecteurs, organisez les fenêtres et optimisez l'affichage pour l'enseignement.
@@ -927,15 +553,24 @@
             <div class="cards-grid">
                 <div class="card">
                     <div class="card-header">
+                        <div class="card-icon">📽️</div>
+                        <div><h3>Contrôle projecteur</h3></div>
+                    </div>
+                    <p class="card-description"><strong>Extinction image (AV-Mute) :</strong> Rend l'affichage noir sans débrancher le projecteur.<br><strong>Pause image (Freeze) :</strong> Fige l'image projetée pour travailler sur le portable en privé.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-secondary" onclick="alert('Ces fonctions se trouvent sur les télécommandes des projecteurs NEC (boutons AV-Mute et Freeze).\n\nSi votre classe est équipée d\'un autre fabricant, des boutons équivalents devraient également exister sur la télécommande.\n\nVous pouvez aussi aller voir le service informatique pour qu\'ils vous montrent où se trouvent ces boutons.')">Plus d'informations</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
                         <div class="card-icon">📺</div>
                         <div>
                             <h3>Mode projection</h3>
                             <span class="shortcut-tag">Win + P</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Choisissez rapidement entre Dupliquer (même affichage) ou Étendre (bureau étendu). Essentiel pour gérer projecteur et notes.
-                    </p>
+                    <p class="card-description">Choisissez rapidement entre Dupliquer (même affichage) ou Étendre (bureau étendu). Essentiel pour gérer projecteur et notes.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Win + P\n\nDupliquer = Même affichage partout\nÉtendre = Bureau étendu (notes privées + présentation)')">Plus d'informations</button>
                     </div>
@@ -949,44 +584,9 @@
                             <span class="shortcut-tag">Win + K</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Connectez-vous rapidement à une télévision compatible. Plus besoin de chercher dans les paramètres.<br>
-                        <strong>Note :</strong> Fonctionne avec certaines télévisions intelligentes. Non compatible avec les projecteurs traditionnels.
-                    </p>
+                    <p class="card-description">Connectez-vous rapidement à une télévision compatible. Plus besoin de chercher dans les paramètres.<br><strong>Note :</strong> Fonctionne avec certaines télévisions intelligentes. Non compatible avec les projecteurs traditionnels.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('Appuyez sur Win + K pour voir les périphériques sans-fil disponibles\n\nFonctionne avec les télévisions compatibles Miracast/WiDi.\nNe fonctionne PAS avec les projecteurs.')">Plus d'informations</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📸</div>
-                        <div>
-                            <h3>Capture d'écran</h3>
-                            <span class="shortcut-tag">Win + MAJ + S</span>
-                        </div>
-                    </div>
-                    <p class="card-description">
-                        Capturez rapidement une zone, une fenêtre ou tout l'écran. Parfait pour créer du matériel pédagogique ou annoter en direct.
-                    </p>
-                    <div class="card-actions">
-                        <button class="btn btn-secondary" onclick="alert('Win + MAJ + S ouvre l\'outil Capture d\'écran')">Plus d'informations</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🎥</div>
-                        <div>
-                            <h3>Enregistrement vidéo</h3>
-                            <span class="shortcut-tag">Win + MAJ + R</span>
-                        </div>
-                    </div>
-                    <p class="card-description">
-                        Enregistrez l'écran en vidéo avec l'outil intégré Windows. Idéal pour créer des tutoriels ou démonstrations pour les étudiant(e)s.
-                    </p>
-                    <div class="card-actions">
-                        <button class="btn btn-secondary" onclick="alert('Win + MAJ + R démarre l\'enregistrement vidéo\nUtilisez la barre d\'outils pour arrêter')">Plus d'informations</button>
                     </div>
                 </div>
 
@@ -998,27 +598,9 @@
                             <span class="shortcut-tag">Win + ←/→</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Ancrez les fenêtres rapidement. Win + Flèche pour placer à gauche/droite. Idéal pour comparer deux documents côte à côte.
-                    </p>
+                    <p class="card-description">Ancrez les fenêtres rapidement. Win + Flèche pour placer à gauche/droite. Idéal pour comparer deux documents côte à côte.</p>
                     <div class="card-actions">
-                        <a href="https://support.microsoft.com/fr-fr/windows/ancrer-vos-fen%C3%AAtres-885a9b1e-a983-a3b1-16cd-c531795e6241" target="_blank" class="btn btn-primary">📚 Guide ancrage</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📋</div>
-                        <div>
-                            <h3>Presse-papiers</h3>
-                            <span class="shortcut-tag">Win + V</span>
-                        </div>
-                    </div>
-                    <p class="card-description">
-                        Accédez à l'historique complet de votre presse-papiers. Retrouvez et collez des éléments copiés précédemment.
-                    </p>
-                    <div class="card-actions">
-                        <button class="btn btn-primary" onclick="window.open('ms-settings:clipboard')">Activer l'historique</button>
+                        <a href="https://support.microsoft.com/fr-fr/windows/ancrer-vos-fen%C3%AAtres-885a9b1e-a983-a3b1-16cd-c531795e6241" target="_blank" class="btn btn-primary">Guide ancrage</a>
                     </div>
                 </div>
 
@@ -1030,9 +612,7 @@
                             <span class="shortcut-tag">F11</span>
                         </div>
                     </div>
-                    <p class="card-description">
-                        Passez en plein écran dans le navigateur ou PowerPoint. Maximise l'espace pour le contenu et élimine les distractions.
-                    </p>
+                    <p class="card-description">Passez en plein écran dans le navigateur. Maximise l'espace pour le contenu et élimine les distractions.</p>
                     <div class="card-actions">
                         <button class="btn btn-secondary" onclick="alert('F11 dans la plupart des navigateurs et applications\nÉchap pour quitter')">Plus d'informations</button>
                     </div>
@@ -1041,39 +621,192 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">⏱️</div>
-                        <div>
-                            <h3>Chronomètre pour gestion du temps</h3>
-                        </div>
+                        <div><h3>Chronomètre pour gestion du temps</h3></div>
                     </div>
-                    <p class="card-description">
-                        Free Countdown Timer : application portable, toujours visible à l'écran, personnalisable et en français. Idéale pour gérer le temps des activités et exercices en classe.
-                    </p>
+                    <p class="card-description">Free Countdown Timer : application portable, toujours visible à l'écran, personnalisable et en français. Idéale pour gérer le temps des activités et exercices en classe.</p>
                     <div class="card-actions">
                         <a href="https://free-countdown.com/FreeCountdownTimerPortable.zip" class="btn btn-primary" download>Télécharger (portable)</a>
                         <a href="https://free-countdown.com/fr/countdownclock/" target="_blank" class="btn btn-secondary">Plus d'informations</a>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📽️</div>
-                        <div>
-                            <h3>Contrôle projecteur</h3>
-                        </div>
-                    </div>
-                    <p class="card-description">
-                        <strong>Extinction image (AV-Mute) :</strong> Rend l'affichage noir sans débrancher le projecteur.<br>
-                        <strong>Pause image (Freeze) :</strong> Fige l'image projetée pour travailler sur le portable en privé.
-                    </p>
-                    <div class="card-actions">
-                        <button class="btn btn-secondary" onclick="alert('Ces fonctions se trouvent sur les télécommandes des projecteurs NEC (boutons AV-Mute et Freeze).\n\nSi votre classe est équipée d\'un autre fabricant, des boutons équivalents devraient également exister sur la télécommande.')">Plus d'informations</button>
+            </div>
+            <div class="back-to-toc"><a href="#toc">↑ Retour au menu</a></div>
+        </section>
+
+        <!-- Raccourcis Essentiels -->
+        <div id="shortcuts-section" class="tips-section" style="scroll-margin-top:80px;">
+            <h2>⌨️ Raccourcis essentiels</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-medium);">Mémorisez ces raccourcis pour une gestion fluide en classe. Organisés par catégorie pour un repérage rapide.</p>
+
+            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 1.5rem; color: var(--primary); border-left: 4px solid var(--primary); padding-left: 0.75rem;">🖥️ Projection & Affichage</h3>
+            <div class="tip-item"><div class="tip-shortcut">Win + P</div><div class="tip-description">Changer mode projection (Dupliquer / Étendre)</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + K</div><div class="tip-description">Connexion sans fil à un écran ou télévision</div></div>
+            <div class="tip-item"><div class="tip-shortcut">F11</div><div class="tip-description">Mode plein écran dans le navigateur ou PowerPoint</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + D</div><div class="tip-description">Afficher / masquer le bureau instantanément</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + ← / →</div><div class="tip-description">Ancrer une fenêtre à gauche ou à droite de l'écran</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + ↑</div><div class="tip-description">Maximiser la fenêtre active</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Alt + Tab</div><div class="tip-description">Basculer rapidement entre les applications ouvertes</div></div>
+
+            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #8b5cf6; border-left: 4px solid #8b5cf6; padding-left: 0.75rem;">🔒 Vie privée & Confidentialité</h3>
+            <div class="tip-item"><div class="tip-shortcut">Win + N</div><div class="tip-description">Ouvrir le centre de notifications — activer Ne pas déranger</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + L</div><div class="tip-description">Verrouiller l'écran immédiatement</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + Tab</div><div class="tip-description">Vue des tâches et gestion des bureaux virtuels</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + Ctrl + D</div><div class="tip-description">Créer un nouveau bureau virtuel</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + Ctrl + ← / →</div><div class="tip-description">Naviguer entre les bureaux virtuels</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Ctrl + MAJ + B</div><div class="tip-description">Afficher / masquer la barre de favoris (Edge)</div></div>
+
+            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #0ea5e9; border-left: 4px solid #0ea5e9; padding-left: 0.75rem;">👁️ Visibilité & Accessibilité</h3>
+            <div class="tip-item"><div class="tip-shortcut">Win + + / −</div><div class="tip-description">Loupe Windows — zoom avant / arrière</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + Échap</div><div class="tip-description">Quitter la loupe Windows</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Ctrl + Roulette</div><div class="tip-description">Zoom dans le navigateur ou dans une application</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Ctrl + Ctrl</div><div class="tip-description">Cercle blanc autour du curseur (PowerToys)</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + MAJ + H</div><div class="tip-description">Clics visuels de souris — cercles colorés (PowerToys)</div></div>
+
+            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #f59e0b; border-left: 4px solid #f59e0b; padding-left: 0.75rem;">📸 Capture & Enregistrement</h3>
+            <div class="tip-item"><div class="tip-shortcut">Win + MAJ + S</div><div class="tip-description">Capture d'écran d'une zone ou d'une fenêtre</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Win + MAJ + R</div><div class="tip-description">Enregistrement vidéo de l'écran</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Alt + Impr. écran</div><div class="tip-description">Fenêtre active seulement — <strong>Impr. écran</strong> seul capture tout l'écran</div></div>
+
+            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #10b981; border-left: 4px solid #10b981; padding-left: 0.75rem;">📋 Productivité générale</h3>
+            <div class="tip-item"><div class="tip-shortcut">Ctrl + W</div><div class="tip-description">Fermer l'onglet actif dans le navigateur ou un fichier dans l'Explorateur</div></div>
+            <div class="tip-item"><div class="tip-shortcut">Ctrl + Tab</div><div class="tip-description">Naviguer entre les onglets ouverts dans le navigateur ou l'Explorateur Windows</div></div>
+
+            <div class="back-to-toc"><a href="#toc">↑ Retour au menu</a></div>
+        </div>
+
+        <!-- Section PowerToys Détaillée -->
+        <section id="powertoys-section" style="scroll-margin-top: 80px; margin-top: 4rem;">
+            <div class="powertoys-block" style="background: linear-gradient(135deg, #e8d9b8 0%, #ebdfc4 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 3rem; color: #3b2e14; box-shadow: 0 8px 24px rgba(139, 105, 45, 0.18); border: 1px solid #d4bc8a;">
+                <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/2020_PowerToys_Icon.svg" alt="PowerToys" style="width: 60px; height: 60px;">
+                    <div>
+                        <h2 style="font-family: 'Crimson Pro', serif; font-size: 2.25rem; margin-bottom: 0.5rem; color: #3b2e14;">PowerToys - Outils essentiels</h2>
+                        <p style="opacity: 0.85; font-size: 1.05rem; color: #5c4520;">Suite d'outils gratuits de Microsoft pour améliorer l'expérience d'enseignement</p>
                     </div>
                 </div>
+
+                <div class="powertoys-inner-box" style="background: rgba(255,255,255,0.45); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(139,105,45,0.2);">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600; color: #3b2e14;">📦 Installation</h3>
+                    <p style="margin-bottom: 1rem; line-height: 1.7; color: #5c4520;">PowerToys est disponible gratuitement pour tous les portables du Cégep Gérald-Godin.</p>
+                    <div style="display: grid; gap: 1rem;">
+                        <div>
+                            <strong style="color: #3b2e14;">Option 1 : Centre logiciel du Cégep (Recommandé)</strong><br>
+                            <button class="btn" style="background: #8b6920; color: white; margin-top: 0.5rem; width: auto; font-weight: 600;" onclick="window.location.href='softwarecenter:'">Ouvrir Centre logiciel</button>
+                        </div>
+                        <div>
+                            <strong style="color: #3b2e14;">Option 2 : Site officiel Microsoft</strong><br>
+                            <a href="https://github.com/microsoft/PowerToys/releases" target="_blank" style="color: #7a5c14; text-decoration: underline; font-weight: 500;">Télécharger depuis GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">✨</div>
+                        <strong style="color: #3b2e14;">Clics visuels</strong>
+                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + H</p>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Cercles jaunes (gauche) et bleus (droit) lors des clics. Les étudiant(e)s voient exactement où vous cliquez.</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">⭕</div>
+                        <strong style="color: #3b2e14;">Localisateur souris</strong>
+                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Ctrl + Ctrl (double appui)</p>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Cercle blanc autour du curseur pour le retrouver rapidement sur grand écran.</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🎨</div>
+                        <strong style="color: #3b2e14;">Sélecteur de couleur</strong>
+                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + C</p>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Identifiez rapidement n'importe quelle couleur à l'écran. Utile en arts, design ou infographie.</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">📏</div>
+                        <strong style="color: #3b2e14;">Mesure d'écran</strong>
+                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + M</p>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Mesurez des distances et angles à l'écran en pixels. Pratique pour montrer des proportions.</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🔍</div>
+                        <strong style="color: #3b2e14;">PowerToys Run</strong>
+                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Alt + Espace</p>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Lanceur rapide d'applications et de fichiers. Plus rapide que de chercher dans le menu Démarrer.</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🎯</div>
+                        <strong style="color: #3b2e14;">FancyZones</strong>
+                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + `</p>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Organisez vos fenêtres en zones personnalisées. Idéal pour afficher plusieurs documents côte à côte.</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">⌨️</div>
+                        <strong style="color: #3b2e14;">Gestionnaire clavier</strong>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Remappez des touches et créez des raccourcis personnalisés. Utile pour adapter le clavier à vos habitudes.</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">⏱️</div>
+                        <strong style="color: #3b2e14;">Toujours visible</strong>
+                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + Ctrl + T</p>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Gardez une fenêtre au premier plan (idéal pour un chronomètre ou un minuteur).</p>
+                    </div>
+                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
+                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🖼️</div>
+                        <strong style="color: #3b2e14;">Redimensionneur d'images</strong>
+                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Redimensionnez plusieurs images en lot depuis l'Explorateur. Clic droit → Redimensionner les images.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="back-to-toc"><a href="#toc">↑ Retour au menu</a></div>
+        </section>
+
+        <!-- Section La Digitale -->
+        <section id="ladigitale-section" style="scroll-margin-top: 80px;">
+            <div class="digitale-block">
+                <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <div style="font-size: 3rem;">🎲</div>
+                    <div>
+                        <h2 style="font-family: 'Crimson Pro', serif; font-size: 2.25rem; color: #065f46; margin-bottom: 0.25rem;">La Digitale - outils pédagogiques libres</h2>
+                        <p style="color: #047857; font-size: 1.05rem;">
+                            <a href="https://ladigitale.dev/" target="_blank" style="color: #047857; font-weight: 600; text-decoration: underline;">ladigitale.dev</a> - une suite d'outils gratuits, sans compte, sans pub, conçus pour l'éducation.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">🖥️</span><span>Digiscreen</span></strong><a href="https://ladigitale.dev/digiscreen/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de créer un fond d'écran interactif pour la classe en présence ou à distance.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">🌩️</span><span>Digistorm</span></strong><a href="https://digistorm.app/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de créer et d'animer des sondages, des remue-méninges et des quiz.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">✍️</span><span>Digiboard</span></strong><a href="https://digiboard.app/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de créer des tableaux blancs collaboratifs.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">🗂️</span><span>Digipad</span></strong><a href="https://digipad.app/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de créer des murs multimédias pour vos activités collaboratives.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">☁️</span><span>Digiwords</span></strong><a href="https://ladigitale.dev/digiwords/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de créer des nuages de mots.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">🧠</span><span>Digiquiz</span></strong><a href="https://ladigitale.dev/digiquiz/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de lire et partager des contenus H5P en ligne.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">🎬</span><span>Digiview</span></strong><a href="https://ladigitale.dev/digiview/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de visionner des vidéos YouTube sans distraction dans vos cours en présence ou à distance.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">🧑‍💻</span><span>Digicode</span></strong><a href="https://ladigitale.dev/digicode/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de créer des codes QR pour partager simplement des contenus sur mobiles.</p>
+                    </div>
+                    <div class="digitale-tile">
+                        <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;"><strong style="color:#065f46;display:flex;align-items:center;gap:0.45rem;"><span style="font-size:1.5rem;line-height:1;">🔔</span><span>Digibuzzer</span></strong><a href="https://digibuzzer.app/" target="_blank" class="digitale-open-btn" aria-label="Ouvrir l'outil" title="Ouvrir l'outil">🗗</a></div><p style="font-size:0.9rem;margin-top:0.4rem;color:#047857;">Permet de jouer autour d'un buzzer connecté avec un principe de question/réponse.</p>
+                    </div>
+                </div>
+                <div class="back-to-toc"><a href="#toc">↑ Retour au menu</a></div>
             </div>
         </section>
 
         <!-- Préparation de cours -->
-        <div class="workflow">
+        <div id="workflow-section" class="workflow" style="scroll-margin-top:80px;">
             <h2>⚡ Préparation de cours recommandée</h2>
             <div class="workflow-steps">
                 <div class="workflow-step">
@@ -1107,245 +840,41 @@
             </div>
         </div>
 
-        <!-- Raccourcis Essentiels -->
-        <div class="tips-section">
-            <h2>⌨️ Raccourcis essentiels</h2>
-            <p style="margin-bottom: 2rem; color: var(--text-medium);">Mémorisez ces raccourcis pour une gestion fluide en classe. Organisés par catégorie pour un repérage rapide.</p>
-
-            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 1.5rem; color: var(--primary); border-left: 4px solid var(--primary); padding-left: 0.75rem;">🖥️ Projection & Affichage</h3>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + P</div>
-                <div class="tip-description">Changer mode projection (Dupliquer / Étendre)</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + K</div>
-                <div class="tip-description">Connexion sans fil à un écran ou télévision</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">F11</div>
-                <div class="tip-description">Mode plein écran dans le navigateur ou PowerPoint</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + D</div>
-                <div class="tip-description">Afficher / masquer le bureau instantanément</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + ← / →</div>
-                <div class="tip-description">Ancrer une fenêtre à gauche ou à droite de l'écran</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + ↑</div>
-                <div class="tip-description">Maximiser la fenêtre active</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Alt + Tab</div>
-                <div class="tip-description">Basculer rapidement entre les applications ouvertes</div>
-            </div>
-
-            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #8b5cf6; border-left: 4px solid #8b5cf6; padding-left: 0.75rem;">🔒 Vie privée & Confidentialité</h3>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + N</div>
-                <div class="tip-description">Ouvrir le centre de notifications — activer Ne pas déranger</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + L</div>
-                <div class="tip-description">Verrouiller l'écran immédiatement</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + Tab</div>
-                <div class="tip-description">Vue des tâches et gestion des bureaux virtuels</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + Ctrl + D</div>
-                <div class="tip-description">Créer un nouveau bureau virtuel</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + Ctrl + ← / →</div>
-                <div class="tip-description">Naviguer entre les bureaux virtuels</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Ctrl + MAJ + B</div>
-                <div class="tip-description">Afficher / masquer la barre de favoris (Edge)</div>
-            </div>
-
-            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #0ea5e9; border-left: 4px solid #0ea5e9; padding-left: 0.75rem;">👁️ Visibilité & Accessibilité</h3>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + + / −</div>
-                <div class="tip-description">Loupe Windows — zoom avant / arrière</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + Échap</div>
-                <div class="tip-description">Quitter la loupe Windows</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Ctrl + Roulette</div>
-                <div class="tip-description">Zoom dans le navigateur ou dans une application</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Ctrl + Ctrl</div>
-                <div class="tip-description">Cercle blanc autour du curseur (PowerToys)</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + MAJ + H</div>
-                <div class="tip-description">Clics visuels de souris — cercles colorés (PowerToys)</div>
-            </div>
-            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #f59e0b; border-left: 4px solid #f59e0b; padding-left: 0.75rem;">📸 Capture & Enregistrement</h3>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + MAJ + S</div>
-                <div class="tip-description">Capture d'écran d'une zone ou d'une fenêtre</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + MAJ + R</div>
-                <div class="tip-description">Enregistrement vidéo de l'écran</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Alt + Impr. écran</div>
-                <div class="tip-description">Fenêtre active seulement — <strong>Impr. écran</strong> seul capture tout l'écran</div>
-            </div>
-
-            <h3 style="font-family: 'Crimson Pro', serif; font-size: 1.4rem; margin-bottom: 1rem; margin-top: 2rem; color: #10b981; border-left: 4px solid #10b981; padding-left: 0.75rem;">📋 Productivité générale</h3>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + V</div>
-                <div class="tip-description">Historique du presse-papiers (accès aux copies précédentes)</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Win + . (point)</div>
-                <div class="tip-description">Panneau d'émojis et de symboles</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Alt + Espace</div>
-                <div class="tip-description">PowerToys Run — lancer une application rapidement</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Ctrl + W</div>
-                <div class="tip-description">Fermer l'onglet actif dans le navigateur ou un fichier dans l'Explorateur — évite de chercher le petit ✕</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-shortcut">Ctrl + Tab</div>
-                <div class="tip-description">Naviguer entre les onglets ouverts dans le navigateur ou l'Explorateur Windows</div>
-            </div>
-
-            <div class="tip-item">
-                <div class="tip-shortcut">Ctrl + MAJ + T</div>
-                <div class="tip-description">Rouvrir le dernier onglet fermé dans le navigateur</div>
-            </div>
-            </div>
-
-        <!-- Section PowerToys Détaillée -->
-        <section id="powertoys-section" style="scroll-margin-top: 80px; margin-top: 4rem;">
-            <div class="powertoys-block" style="background: linear-gradient(135deg, #e8d9b8 0%, #ebdfc4 100%); border-radius: 16px; padding: 2.5rem; margin-bottom: 3rem; color: #3b2e14; box-shadow: 0 8px 24px rgba(139, 105, 45, 0.18); border: 1px solid #d4bc8a;">
-                <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/2020_PowerToys_Icon.svg" alt="PowerToys" style="width: 60px; height: 60px;">
-                    <div>
-                        <h2 style="font-family: 'Crimson Pro', serif; font-size: 2.25rem; margin-bottom: 0.5rem; color: #3b2e14;">PowerToys - Outils essentiels</h2>
-                        <p style="opacity: 0.85; font-size: 1.05rem; color: #5c4520;">Suite d'outils gratuits de Microsoft pour améliorer l'expérience d'enseignement</p>
-                    </div>
-                </div>
-
-                <div class="powertoys-inner-box" style="background: rgba(255,255,255,0.45); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(139,105,45,0.2);">
-                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600; color: #3b2e14;">📦 Installation</h3>
-                    <p style="margin-bottom: 1rem; line-height: 1.7; color: #5c4520;">PowerToys est disponible gratuitement pour tous les portables du Cégep Gérald-Godin.</p>
-                    
-                    <div style="display: grid; gap: 1rem;">
-                        <div>
-                            <strong style="color: #3b2e14;">Option 1 : Centre logiciel du Cégep (Recommandé)</strong>
-                            <br>
-                            <button class="btn" style="background: #8b6920; color: white; margin-top: 0.5rem; width: auto; font-weight: 600;" onclick="window.location.href='softwarecenter:'">Ouvrir Centre logiciel</button>
-                        </div>
-                        <div>
-                            <strong style="color: #3b2e14;">Option 2 : Site officiel Microsoft</strong>
-                            <br>
-                            <a href="https://github.com/microsoft/PowerToys/releases" target="_blank" style="color: #7a5c14; text-decoration: underline; font-weight: 500;">Télécharger depuis GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">✨</div>
-                        <strong style="color: #3b2e14;">Clics visuels</strong>
-                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + H</p>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Cercles jaunes (gauche) et bleus (droit) lors des clics. Les étudiant(e)s voient exactement où vous cliquez.</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">⭕</div>
-                        <strong style="color: #3b2e14;">Localisateur souris</strong>
-                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Ctrl + Ctrl (double appui)</p>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Cercle blanc autour du curseur pour le retrouver rapidement sur grand écran.</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🎨</div>
-                        <strong style="color: #3b2e14;">Sélecteur de couleur</strong>
-                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + C</p>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Identifiez rapidement n'importe quelle couleur à l'écran. Utile en arts, design ou infographie.</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">📏</div>
-                        <strong style="color: #3b2e14;">Mesure d'écran</strong>
-                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + M</p>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Mesurez des distances et angles à l'écran en pixels. Pratique pour montrer des proportions.</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🔍</div>
-                        <strong style="color: #3b2e14;">PowerToys Run</strong>
-                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Alt + Espace</p>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Lanceur rapide d'applications et de fichiers. Plus rapide que de chercher dans le menu Démarrer.</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🎯</div>
-                        <strong style="color: #3b2e14;">FancyZones</strong>
-                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + MAJ + `</p>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Organisez vos fenêtres en zones personnalisées. Idéal pour afficher plusieurs documents côte à côte.</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">⌨️</div>
-                        <strong style="color: #3b2e14;">Gestionnaire clavier</strong>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Remappez des touches et créez des raccourcis personnalisés. Utile pour adapter le clavier à vos habitudes.</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">⏱️</div>
-                        <strong style="color: #3b2e14;">Toujours visible</strong>
-                        <p class="tile-shortcut" style="font-size: 0.9rem; color: #7a6030; margin-top: 0.5rem;">Win + Ctrl + T</p>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Gardez une fenêtre au premier plan (idéal pour un chronomètre ou un minuteur).</p>
-                    </div>
-
-                    <div class="powertoys-tile" style="background: rgba(255,255,255,0.4); padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(139,105,45,0.2);">
-                        <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🖼️</div>
-                        <strong style="color: #3b2e14;">Redimensionneur d'images</strong>
-                        <p class="tile-desc" style="font-size: 0.9rem; margin-top: 0.5rem; color: #5c4520;">Redimensionnez plusieurs images en lot depuis l'Explorateur. Clic droit → Redimensionner les images.</p>
-                    </div>
-
-
-            </div>
-        </section>
-
         <!-- Section Commentaires et suggestions -->
-        <div class="feedback-section" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 2.5rem; margin-top: 3rem; margin-bottom: 2rem; border: 2px solid #86efac;">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
-                <h2 style="font-family: 'Crimson Pro', serif; font-size: 2rem; color: #166534; margin-bottom: 1rem;">Commentaires et suggestions</h2>
-                <p style="color: #15803d; font-size: 1.1rem; line-height: 1.7; max-width: 700px; margin: 0 auto;">
-                    Votre expérience et vos astuces sont précieuses! Vous avez découvert un truc pratique en classe? Une amélioration à suggérer? Nous serions ravis de connaître votre avis pour enrichir cette trousse et la rendre encore plus utile pour tous les enseignant(e)s du cégep.
-                </p>
-            </div>
-
-            <div style="text-align: center;">
-                <button 
-                    class="btn btn-primary" 
-                    style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); border: none; font-size: 1.1rem; padding: 1rem 2rem; display: inline-flex; align-items: center; gap: 0.75rem; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); cursor: pointer;"
-                    onclick="sendFeedback()">
-                    <span style="font-size: 1.3rem;">📧</span>
-                    Partager mon avis
-                </button>
+        <div class="feedback-section">
+            <div class="feedback-grid">
+                <div class="feedback-card">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
+                    <h2 class="feedback-title">Commentaires et suggestions</h2>
+                    <p class="feedback-text">
+                        Votre expérience et vos astuces sont précieuses! Vous avez découvert un truc pratique en classe? Une amélioration à suggérer? Nous serions ravis de connaître votre avis pour enrichir cette trousse et la rendre encore plus utile pour tous les enseignant(e)s du cégep.
+                    </p>
+                    <button class="btn btn-secondary feedback-btn" onclick="sendFeedback()">
+                        <span style="font-size: 1.3rem;">📧</span>
+                        Partager mon avis
+                    </button>
+                </div>
+                <div class="feedback-card">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
+                    <h2 class="feedback-title" style="margin-bottom:0.75rem;">Trousse techno - Productivité</h2>
+                    <p class="feedback-text">
+                        Gagnez du temps dès cette semaine avec des astuces simples et efficaces pour Outlook, Teams, Windows 11, OneDrive, PowerToys et plus encore.
+                    </p>
+                    <a class="btn btn-secondary feedback-btn" href="..\Trousse techno pour productivité\index.html">
+                        <span style="font-size: 1.3rem;">🚀</span>
+                        Ouvrir la trousse Productivité
+                    </a>
+                </div>
             </div>
         </div>
+
+
+    </div>
+
+    <!-- ── Keyboard Tooltip ── -->
+    <div id="kbd-tooltip" class="kbd-tooltip">
+        <canvas id="kbd-canvas" width="985" height="293"></canvas>
+        <div class="kbd-tooltip-label" id="kbd-label"></div>
     </div>
 
     <script>
@@ -1356,34 +885,154 @@
             window.location.href = "mailto:cptic@cgodin.qc.ca?cc=aidetechno@cgodin.qc.ca&subject=" + subject + "&body=" + body;
         }
 
-
-        // Theme toggle functionality
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
             const themeText = document.getElementById('theme-text');
-            
             body.classList.toggle('dark-mode');
-            
             if (body.classList.contains('dark-mode')) {
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'Mode clair';
+                themeIcon.textContent = '☀️'; themeText.textContent = 'Mode clair';
                 localStorage.setItem('theme', 'dark');
             } else {
-                themeIcon.textContent = '🌙';
-                themeText.textContent = 'Mode sombre';
+                themeIcon.textContent = '🌙'; themeText.textContent = 'Mode sombre';
                 localStorage.setItem('theme', 'light');
             }
         }
-        
-        // Load saved theme on page load
+
         window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
+            if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add('dark-mode');
                 document.getElementById('theme-icon').textContent = '☀️';
                 document.getElementById('theme-text').textContent = 'Mode clair';
             }
+        });
+
+        // ── Key coordinates [cx, cy, w, h] ──
+        const KBD_KEYS = {
+            'Esc':[29,26,42,42],'F1':[115,26,42,42],'F2':[157,26,43,42],'F3':[201,26,43,42],'F4':[244,26,44,42],
+            'F5':[309,26,43,42],'F6':[352,26,43,42],'F7':[395,26,43,42],'F8':[438,26,43,42],
+            'F9':[504,26,42,42],'F10':[546,26,43,42],'F11':[589,26,43,42],'F12':[633,26,44,42],
+            'PrtSc':[682,26,54,42],
+            '#':[29,91,42,42],'1':[71,91,43,42],'2':[114,91,43,42],'3':[157,91,43,42],'4':[201,91,44,42],
+            '5':[244,91,43,42],'6':[287,91,43,42],'7':[330,91,43,42],'8':[373,91,43,42],
+            '9':[417,91,44,42],'0':[460,91,43,42],'-':[503,91,43,42],'=':[546,91,43,42],'BS':[611,91,87,42],
+            'Tab':[39,133,63,43],
+            'Q':[93,133,44,43],'W':[136,133,43,43],'E':[179,133,43,43],'R':[222,133,43,43],
+            'T':[265,133,43,43],'Y':[309,133,44,43],'U':[352,133,43,43],'I':[395,133,43,43],
+            'O':[438,133,43,43],'P':[481,133,43,43],'[':[525,133,44,43],']':[568,133,43,43],
+            'Entree':[618,147,52,72],
+            'CapsLock':[39,176,63,43],
+            'A':[93,176,44,43],'S':[136,176,43,43],'D':[179,176,43,43],'F':[222,176,43,43],
+            'G':[265,176,43,43],'H':[309,176,44,43],'J':[352,176,43,43],'K':[395,176,43,43],
+            'L':[438,176,43,43],';':[481,176,43,43],"'":[525,176,44,43],'\\':[568,176,43,43],
+            'Shift_L':[35,219,54,43],
+            'Z':[126,219,43,43],'X':[170,219,44,43],'C':[213,219,43,43],'V':[256,219,43,43],
+            'B':[299,219,43,43],'N':[342,219,43,43],'M':[385,219,43,43],',':[429,219,44,43],
+            '.':[472,219,43,43],'Shift_R':[567,219,61,43],
+            'Ctrl_L':[35,263,54,44],'Win_L':[88,263,53,44],'Alt':[142,263,54,44],
+            'Space':[304,263,271,44],
+            'Win_R':[478,263,32,44],'Menu':[520,263,53,44],'Ctrl_R':[574,263,54,44],
+            'Insert':[682,91,54,42],'Home':[730,91,43,42],'PageUp':[773,91,43,42],
+            'Delete':[682,133,54,43],'End':[730,133,43,43],'PageDown':[773,133,43,43],
+            'Up':[730,219,43,43],
+            'Left':[682,263,54,44],'Down':[730,263,43,44],'Right':[773,263,43,44],
+        };
+
+        const KBD_SHORTCUTS = {
+            'Win + (plus)':['Win_L','='],
+            'Win + P':['Win_L','P'],'Win + K':['Win_L','K'],
+            'Win + D':['Win_L','D'],'Win + L':['Win_L','L'],
+            'Win + N':['Win_L','N'],'Win + V':['Win_L','V'],
+            'Win + Tab':['Win_L','Tab'],'Win + ↑':['Win_L','Up'],
+            'Win + ← / →':['Win_L','Left','Right'],'Win + ←/→':['Win_L','Left','Right'],
+            'Win + Ctrl + D':['Win_L','Ctrl_L','D'],
+            'Win + Ctrl + ← / →':['Win_L','Ctrl_L','Left','Right'],
+            'Win + MAJ + S':['Win_L','Shift_L','S'],'Win + MAJ + R':['Win_L','Shift_L','R'],
+            'Win + MAJ + H':['Win_L','Shift_L','H'],'Win + MAJ + C':['Win_L','Shift_L','C'],
+            'Win + MAJ + M':['Win_L','Shift_L','M'],
+            'Win + Ctrl + T':['Win_L','Ctrl_L','T'],
+            'Win + . (point)':['Win_L','.'],
+            'Win + + / −':['Win_L','='],
+            'Win + Échap':['Win_L','Esc'],
+            'Ctrl + Tab':['Ctrl_L','Tab'],'Ctrl + W':['Ctrl_L','W'],
+            'Ctrl + MAJ + T':['Ctrl_L','Shift_L','T'],
+            'Ctrl + MAJ + B':['Ctrl_L','Shift_L','B'],
+            'Ctrl + MAJ + Y':['Ctrl_L','Shift_L','Y'],
+            'Ctrl + Ctrl':['Ctrl_L'],
+            'Ctrl + Ctrl (double appui)':['Ctrl_L'],
+            'Ctrl + Roulette':['Ctrl_L'],
+            'F11':['F11'],'F9':['F9'],
+            'Alt + Tab':['Alt','Tab'],
+            'Alt + Espace':['Alt','Space'],
+            'Alt + Impr. écran':['Alt','PrtSc'],
+            'Win + MAJ + `':['Win_L','Shift_L',"'"],
+        };
+
+        const kbdImg = new Image();
+        kbdImg.src = 'https://equipetechno.github.io/trousse-techno-productivite/clavier-fr-ca.png';
+
+        const tooltip = document.getElementById('kbd-tooltip');
+        const canvas  = document.getElementById('kbd-canvas');
+        const ctx     = canvas.getContext('2d');
+        const label   = document.getElementById('kbd-label');
+
+        function drawKeyboard(keys) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(kbdImg, 0, 0);
+            ctx.fillStyle = 'rgba(15,23,42,0.45)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            keys.forEach(k => {
+                const kd = KBD_KEYS[k];
+                if (!kd) return;
+                const [cx,cy,w,h] = kd;
+                const x = cx-w/2, y = cy-h/2;
+                ctx.save();
+                ctx.shadowColor='#38bdf8'; ctx.shadowBlur=18;
+                ctx.fillStyle='rgba(56,189,248,0.35)';
+                ctx.beginPath(); ctx.roundRect(x-3,y-3,w+6,h+6,5); ctx.fill();
+                ctx.shadowBlur=8;
+                ctx.fillStyle='rgba(186,230,253,0.6)';
+                ctx.beginPath(); ctx.roundRect(x,y,w,h,4); ctx.fill();
+                ctx.restore();
+            });
+        }
+
+        function showTooltip(el, text, keys) {
+            if (!kbdImg.complete || keys.length===0) return;
+            drawKeyboard(keys);
+            label.textContent = text;
+            tooltip.classList.add('visible');
+            positionTooltip(el);
+        }
+
+        function hideTooltip() { tooltip.classList.remove('visible'); }
+
+        function positionTooltip(el) {
+            const rect = el.getBoundingClientRect();
+            const sy = window.scrollY||window.pageYOffset, sx = window.scrollX||window.pageXOffset;
+            const tw = 300;
+            let left = rect.left+sx+rect.width/2-tw/2;
+            let top  = rect.top+sy-180;
+            if (left<8) left=8;
+            if (left+tw>document.body.clientWidth-8) left=document.body.clientWidth-tw-8;
+            if (top<sy+8) top=rect.bottom+sy+8;
+            tooltip.style.left=left+'px'; tooltip.style.top=top+'px'; tooltip.style.width=tw+'px';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.tip-shortcut, .shortcut-tag, .tile-shortcut').forEach(el => {
+                const raw = el.textContent.trim();
+                let keys = KBD_SHORTCUTS[raw];
+                if (!keys) {
+                    for (const [k,v] of Object.entries(KBD_SHORTCUTS)) {
+                        if (k.toLowerCase().replace(/\s/g,'')===raw.toLowerCase().replace(/\s/g,'')) { keys=v; break; }
+                    }
+                }
+                if (!keys) return;
+                el.style.cursor='default';
+                el.addEventListener('mouseenter', ()=>showTooltip(el,raw,keys));
+                el.addEventListener('mouseleave', hideTooltip);
+            });
         });
     </script>
 </body>
