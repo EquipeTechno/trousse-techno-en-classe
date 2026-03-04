@@ -864,10 +864,9 @@
                     <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
                     <h2 class="feedback-title" style="margin-bottom:0.75rem;">Trousse techno - Productivité</h2>
                     <p class="feedback-text">
-                        Gagnez du temps dès cette semaine avec des astuces simples et efficaces pour Outlook, Teams, Windows 11, OneDrive, PowerToys et plus encore.
+                        Cette trousse regroupe des petits trucs - souvent méconnus - qui font une vraie différence au quotidien. Pas besoin d'être expert : chaque astuce est expliquée simplement, avec les étapes pour l'activer. Explorez à votre rythme et gardez ce qui vous aide vraiment!
                     </p>
                     <a class="btn btn-secondary feedback-btn" href="..\trousse-techno-productivite\index.html">
-                        <span style="font-size: 1.3rem;">🚀</span>
                         Ouvrir la trousse Productivité
                     </a>
                 </div>
@@ -886,7 +885,7 @@
     <script>
         function sendFeedback() {
             var subject = encodeURIComponent("Commentaires - Trousse techno en classe");
-            var lines = ["Bonjour,", "", "Je vous écris concernant la Trousse techno en classe du Cégep Gérald-Godin.", "", "[Partagez ici vos commentaires, suggestions ou astuces que vous aimeriez voir dans la trousse]", "", "---", "Nom : ", "Département : ", "", "", "Merci de contribuer à l'amélioration de nos outils pédagogiques!"];
+            var lines = ["Bonjour,", "", "Je vous écris concernant la Trousse techno en classe du Cégep Gérald-Godin.", "", "[Partagez ici vos commentaires, suggestions ou astuces que vous aimeriez voir dans la trousse]"];
             var body = encodeURIComponent(lines.join("\n"));
             window.location.href = "mailto:cptic@cgodin.qc.ca?cc=aidetechno@cgodin.qc.ca&subject=" + subject + "&body=" + body;
         }
